@@ -1,4 +1,5 @@
-GIT_USER=kbeanyn \
+cd website
+GIT_USER=kbehouse \
   CURRENT_BRANCH=master \
   USE_SSH=true \
   npm run publish-gh-pages
