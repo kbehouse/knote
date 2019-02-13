@@ -1,9 +1,13 @@
 {
-  "docs": {
-    "Docusaurus": ["doc1","intro"],
+  "docs222": {
+    "Docusaurus": ["doc1"],
     "First Category": ["doc2"],
     "Second Category": ["doc3"],
     "Zero":["intro"]
+  },
+  "react": {
+    "Install": ["react-install-1", "react-install-2"],
+    "JSX": ["react-JSX-1", "react-JSX-2"]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
