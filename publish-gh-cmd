@@ -3,3 +3,6 @@ GIT_USER=kbehouse \
   CURRENT_BRANCH=master \
   USE_SSH=true \
   npm run publish-gh-pages
+
+
+Travias URL: https://travis-ci.org/kbehouse/knote
