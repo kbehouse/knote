@@ -1,7 +1,6 @@
 ---
-id: doc1
-title: Latin-ish
-sidebar_label: Example Page
+id: api-pages
+title: Pages and Styles
 ---
 # Test Code block
 Example:

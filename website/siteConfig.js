@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 // List of projects/orgs using your project for the users page.
 const users = [
   {
@@ -14,7 +20,8 @@ const siteConfig = {
   title: 'KNote', // Title for your website.
   tagline: 'My notebook for learning something',
   url: 'https://kbehosue.github.io', // Your website URL
-  baseUrl: '/knote/', // Base URL for your project */
+  // baseUrl: '/', // for local server 
+  baseUrl: '/knote/', // for github
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
@@ -54,13 +61,17 @@ const siteConfig = {
   copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
 
   highlight: {
-    // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: 'default',
+    //theme: 'default',
+    theme: 'atom-one-dark',
   },
-
-  // Add custom scripts here that would be placed in <script> tags.
-  scripts: ['https://buttons.github.io/buttons.js'],
-
+  scripts: [
+    'https://buttons.github.io/buttons.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    '/knote/js/code-blocks-buttons.js'
+  ],
+  stylesheets: [
+    '/knote/css/code-blocks-buttons.css',
+  ],
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
   // No .html extensions for paths.
@@ -74,6 +85,7 @@ const siteConfig = {
   enableUpdateTime: true,
 
   editUrl: 'https://github.com/kbehouse/knote/edit/master/docs/',
+  usePrism: ['jsx']
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   //   repoUrl: 'https://github.com/facebook/test-site',
