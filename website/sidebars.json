@@ -7,7 +7,8 @@
   },
   "react": {
     "Install": ["react-install-1", "react-install-2"],
-    "JSX": ["react-JSX-1", "react-JSX-2", "api-pages"]
+    "JSX": ["react-JSX-1", "react-JSX-2", "api-pages"],
+    "Question": ["react-q"]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
