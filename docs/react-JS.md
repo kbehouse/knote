@@ -1,4 +1,4 @@
-## Why use arrow function:
+## Why use arrow function?
  [Arrow function MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
  
  Correct: You cound use *this*.setState()
