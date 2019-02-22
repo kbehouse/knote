@@ -8,7 +8,6 @@
   "react": {
     "Install": ["react-install-1", "react-install-2"],
     "JSX": ["react-JSX-1", "react-JSX-2", "api-pages"],
-    "TryAgain":["react-Try"],
     "Other": ["react-JS"],
     "Question": ["react-q"]
   },
