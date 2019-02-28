@@ -39,6 +39,7 @@ const siteConfig = {
   headerLinks: [
     {doc: 'doc1', label: 'Docs_kbe'},
     {doc: 'react-install-1', label: 'React'},
+    {doc: 'life-insureance', label: 'Life'},
     // {page: 'help', label: 'Help'},
     // {blog: true, label: 'Blog'},
   ],

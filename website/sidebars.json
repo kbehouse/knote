@@ -11,6 +11,9 @@
     "Other": ["react-JS"],
     "Question": ["react-q"]
   },
+  "life": {
+    "Insureance": ["life-insureance","life-insureance-ex"]
+  },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
   }
