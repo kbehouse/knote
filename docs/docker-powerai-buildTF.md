@@ -12,7 +12,7 @@ sidebar_label: Build TF
 ## Get CPU Architecture
 
 取得CPU的架構代號
-ppcle64
+ppc64le
 > 會發現跟一般x86的CPU不同，x86是x86_64
 
 ```
