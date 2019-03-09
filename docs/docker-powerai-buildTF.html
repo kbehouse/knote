@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Build TF for PowerAI · KNote</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;ul&gt;
+&lt;li&gt;由於PowerAI的CPU是Power系列CPU(記得是Power8)&lt;/li&gt;
+&lt;/ul&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Build TF for PowerAI · KNote"/><meta property="og:type" content="website"/><meta property="og:url" content="https://kbehosue.github.io/knote/index.html"/><meta property="og:description" content="&lt;ul&gt;
+&lt;li&gt;由於PowerAI的CPU是Power系列CPU(記得是Power8)&lt;/li&gt;
+&lt;/ul&gt;
+"/><meta property="og:image" content="https://kbehosue.github.io/knote/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://kbehosue.github.io/knote/img/docusaurus.png"/><link rel="shortcut icon" href="/knote/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="stylesheet" href="/knote/css/code-blocks-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/knote/js/code-blocks-buttons.js"></script><link rel="stylesheet" href="/knote/css/prism.css"/><link rel="stylesheet" href="/knote/css/main.css"/><script src="/knote/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/knote/"><img class="logo" src="/knote/img/docusaurus.svg" alt="KNote"/><h2 class="headerTitleWithLogo">KNote</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/knote/docs/doc1" target="_self">Docs_kbe</a></li><li class="siteNavGroupActive"><a href="/knote/docs/docker-powerai" target="_self">Docker</a></li><li class=""><a href="/knote/docs/react-install-1" target="_self">React</a></li><li class=""><a href="/knote/docs/life-insureance" target="_self">Life</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>PowerAI</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">PowerAI<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/knote/docs/docker-powerai">PowerAI</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/knote/docs/docker-powerai-buildTF">Build TF</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/kbehouse/knote/edit/master/docs/docker-powerai-buildTF.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Build TF for PowerAI</h1></header><article><div><span><ul>
+<li>由於PowerAI的CPU是Power系列CPU(記得是Power8)</li>
+<li>因此很多新東西必須<code>自己編譯</code></li>
+<li>當然，先試試看使用apt-get，如果不行再想辦法自己編譯</li>
+<li>以下，是以前我編Tensorflow(tf)的方法，如果你們需要新版的tf，可以嘗試以下方法</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="get-cpu-architecture"></a><a href="#get-cpu-architecture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get CPU Architecture</h2>
+<p>取得CPU的架構代號
+ppcle64</p>
+<blockquote>
+<p>會發現跟一般x86的CPU不同，x86是x86_64</p>
+</blockquote>
+<pre><code class="hljs"><span class="hljs-attribute">uname -m</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="use-docker-to-build"></a><a href="#use-docker-to-build" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use docker to build</h2>
+<p>建議先使用Dokcer來編譯，完成後再安裝到主系統</p>
+<p>You could use the docker for build ppcle64 package, NOT COMMEND build in the main system</p>
+<pre><code class="hljs">$ docker images
+
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+ppc64le-tf-keras-nb        include_build       <span class="hljs-number">7</span>b05882cd800        <span class="hljs-number">6</span> weeks ago         <span class="hljs-number">15</span>GB
+</code></pre>
+<p>you could use the ppc64le-tf-keras-nb:include_build to build</p>
+<pre><code class="hljs">$ docker <span class="hljs-builtin-name">run</span> -d <span class="hljs-attribute">--runtime</span>=nvidia  -p 6002:22 -p 6003:8888  -e <span class="hljs-attribute">NVIDIA_VISIBLE_DEVICES</span>=0 ppc64le-tf-keras-nb:include_build 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="install-bazel"></a><a href="#install-bazel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Bazel</h2>
+<p>from <a href="https://github.com/ppc64le/build-scripts/blob/master/bazel/bazel_ubuntu_16.04.sh">https://github.com/ppc64le/build-scripts/blob/master/bazel/bazel_ubuntu_16.04.sh</a>
+replace url to newer <a href="https://github.com/bazelbuild/bazel/releases">https://github.com/bazelbuild/bazel/releases</a></p>
+<pre><code class="hljs">cd bazel/output/
+<span class="hljs-builtin-name">export</span> <span class="hljs-attribute">PATH</span>=$(pwd):$PATH  # <span class="hljs-builtin-name">set</span> bazel <span class="hljs-keyword">to</span> path
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="install-tensorflow"></a><a href="#install-tensorflow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Tensorflow</h2>
+<pre><code class="hljs"><span class="hljs-keyword">cd</span> tensorflow/
+<span class="hljs-string">./configure</span>
+
+bazel build <span class="hljs-params">--config=opt</span> <span class="hljs-string">//tensorflow/tools/pip_package</span><span class="hljs-function">:build_pip_package</span>
+bazel-bin/tensorflow/tools/pip_package/build_pip_package <span class="hljs-string">/tmp/tensorflow_pkg</span>
+sudo pip3 install <span class="hljs-string">/tmp/tensorflow_pkg/tensorflow</span>*<span class="hljs-string">.whl</span>
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-3-9</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/knote/docs/docker-powerai"><span class="arrow-prev">← </span><span class="function-name-prevnext">PowerAI</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#get-cpu-architecture">Get CPU Architecture</a></li><li><a href="#use-docker-to-build">Use docker to build</a></li><li><a href="#install-bazel">Install Bazel</a></li><li><a href="#install-tensorflow">Install Tensorflow</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/knote/" class="nav-home"><img src="/knote/img/docusaurus.svg" alt="KNote" width="66" height="58"/></a><div><h5>Docs</h5><a href="/knote/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/knote/docs/en/doc2.html">Guides (or other categories)</a><a href="/knote/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/knote/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/knote/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/knote/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>
