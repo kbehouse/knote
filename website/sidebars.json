@@ -11,6 +11,9 @@
     "Other": ["react-JS"],
     "Question": ["react-q"]
   },
+  "Docker": {
+    "PowerAI": ["docker-powerai","docker-powerai-buildTF"]
+  },
   "life": {
     "Insureance": ["life-insureance","life-insureance-ex"]
   },

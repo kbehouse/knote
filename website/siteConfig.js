@@ -38,6 +38,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'doc1', label: 'Docs_kbe'},
+    {doc: 'docker-powerai', label: 'Docker'},
     {doc: 'react-install-1', label: 'React'},
     {doc: 'life-insureance', label: 'Life'},
     // {page: 'help', label: 'Help'},
